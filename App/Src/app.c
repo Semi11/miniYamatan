@@ -6,6 +6,7 @@
 #include "MW_GPIO.h"
 #include "MW_IWDG.h"
 #include "message.h"
+#include "trapezoid_ctl.h"
 #include "MW_flash.h"
 #include "constManager.h"
 
@@ -35,7 +36,7 @@ int suspensionSystem(void);
 
 /*armSystem*/
 static
-int armSystem_modeA(void);
+int armSystem(void);
 
 /*LEDSystem*/
 static
@@ -46,7 +47,7 @@ int appInit(void){
 
   ad_init();
 
-  setTCVAL();
+  setTCVal();
 
   /*GPIO の設定などでMW,GPIOではHALを叩く*/
   return EXIT_SUCCESS;
@@ -104,9 +105,7 @@ int suspensionSystem(void){
  /* 目標値 */
   int DRIL_target_duty;
   int DRIR_target_duty;
-  int DRIBF_target_duty;
-  int DRIBB_target_duty;
-
+  
   /* ボタンを１つ押すと、2つのモータが動作する */
   if( __RC_ISPRESSED_UP(g_rc_data)){
     DRIL_target_duty = -MD_MAX_DUTY_DRIL;

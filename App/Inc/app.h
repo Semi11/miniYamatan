@@ -1,7 +1,7 @@
 #ifndef __APP_H
 #define __APP_H
 
-/* モータ、電磁弁の個数 */ｊ
+/* モータ、電磁弁の個数 */
 #define DD_NUM_OF_MD 5
 #define DD_NUM_OF_AB 0
 
